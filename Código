@@ -1,0 +1,144 @@
+    public static void main(String[] args) {
+        Círculo figura1 = new Círculo(2);
+        Rectángulo figura2 = new Rectángulo(1,2);
+        Cuadrado figura3 = new Cuadrado(3);
+        TriánguloRectángulo figura4 = new TriánguloRectángulo(3,5);
+        Rombo figura5 = new Rombo(4, 8, 3);
+        Trapecio figura6 = new Trapecio(4, 15, 6, 10);
+        
+        System.out.println("El area del círculo es = " + figura1.calcularArea());
+        System.out.println("El perimetro del círculo es = " + figura1.calcularPerímetro());
+        System.out.println();
+        System.out.println("El area del rectangulo es = " + figura2.calcularArea());
+        System.out.println("El perimetro del rectangulo es = " + figura2.calcularPerímetro());
+        System.out.println();
+        System.out.println("El area del cuadrado es = " + figura3.calcularArea());
+        System.out.println("El perímetro del cuadrado es = " + figura3.calcularPerímetro());
+        System.out.println();
+        System.out.println("El área del triángulo es = " + figura4.calcularArea());
+        System.out.println("El perimetro del triángulo es = " + figura4.calcularPerímetro());
+        figura4.determinarTipoTriángulo();
+        System.out.println();
+        System.out.println("El area del rombo es = " + figura5.calcularArea());
+        System.out.println("El perimetro del rombo es = " + figura5.calcularPerímetro());
+        System.out.println();
+        System.out.println("El area del trapecio es = " + figura6.calcularArea());
+        System.out.println("El perimetro del trapecio es = " + figura6.calcularPerímetro());
+        
+    }
+    
+}
+
+package clases.sobre.figuras.geométricas.act2;
+public class Cuadrado {
+    int lado;
+    public Cuadrado(int lado) {
+        this.lado = lado;
+    }
+    double calcularArea() {
+        return lado*lado;
+    }
+    double calcularPerímetro() {
+        return (4*lado);
+    }    
+}
+
+package clases.sobre.figuras.geométricas.act2;
+public class Círculo {
+    int radio;
+    Círculo(int radio){
+        this.radio = radio;
+    }
+    double calcularArea(){
+        return Math.PI*Math.pow(radio,2);
+    }
+    double calcularPerímetro(){
+        return 2*Math.PI*radio;
+    }
+}
+
+
+package clases.sobre.figuras.geométricas.act2;
+public class Rectángulo {
+    int base;
+    int altura;
+    Rectángulo(int base, int altura) {
+        this.base = base;
+        this.altura = altura;
+    }
+    double calcularArea() {
+        return base * altura;
+    }
+    double calcularPerímetro() {
+        return (2 * base) + (2 * altura);
+    }    
+}
+
+
+package clases.sobre.figuras.geométricas.act2;
+public class Rombo {
+    int lado;
+    int dia_mayor;
+    int dia_menor;
+    public Rombo(int lado,int dia_mayor, int dia_menor) {
+        this.lado = lado;
+        this.dia_menor = dia_menor;
+        this.dia_mayor = dia_mayor;
+    }
+    double calcularArea() {
+        return (dia_menor * dia_mayor / 2);
+    }
+    double calcularPerímetro() {
+        return (4*lado);
+    }    
+}
+
+
+package clases.sobre.figuras.geométricas.act2;
+public class Trapecio {
+    int lado;
+    int base_mayor;
+    int base_menor;
+    int altura;
+    public Trapecio(int lado, int base_mayor, int base_menor, int altura) {
+        this.lado = lado;
+        this.base_menor = base_menor;
+        this.base_mayor = base_mayor;
+        this.altura = altura;
+    }
+    double calcularArea() {
+        return ((base_mayor + base_menor * altura) / 2);
+    }
+    double calcularPerímetro() {
+        return (4*lado);
+    }    
+}
+
+
+package clases.sobre.figuras.geométricas.act2;
+public class TriánguloRectángulo {
+    int base; 
+    int altura;
+    public TriánguloRectángulo(int base, int altura) {
+        this.base = base;
+        this.altura = altura;
+    }
+    double calcularArea() {
+        return (base * altura / 2);
+    }
+    double calcularPerímetro() {
+        return (base + altura + calcularHipotenusa());
+    }
+    double calcularHipotenusa() {
+        return Math.pow(base*base + altura*altura, 0.5);
+    }
+    void determinarTipoTriángulo() {
+        if ((base == altura) && (base == calcularHipotenusa()) && (altura == calcularHipotenusa()))
+            System.out.println("Es un triángulo equilátero"); 
+        else if ((base != altura) && (base != calcularHipotenusa()) && (altura != calcularHipotenusa()))
+            System.out.println("Es un triángulo escaleno"); 
+        else
+            System.out.println("Es un triángulo isósceles"); 
+        }
+}
+
